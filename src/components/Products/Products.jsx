@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ProductCard from "./ProductsCard";
+import ProductCard from "../ProductCard";
 
-const Products = () => {
+const Products = ({cart, addToCart, removeFromCart}) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     fetch(`https://run.mocky.io/v3/8fa2a2d7-93fc-4ad8-b2d3-1c7338bae744`)
@@ -15,7 +15,7 @@ const Products = () => {
   return (
     <div>
       {products.map((product, index) => (
-        <ProductCard title={product.title} price={product.price} key={index}/>
+        <ProductCard product={product} key={index} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
       ))}
     </div>
   );
